@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "api traductor",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.3",
+    "mongose": "0.0.2-security",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4",
+    "socket.io": "^2.3.0"
+  }
+}
