@@ -23,7 +23,9 @@ function App() {
   return (
     <div>
 
-
+      <div className="container" >
+      <h1> BIENVENIDOS AL CHAT MERN SOCKET.IO</h1>
+      </div>
 
       {loading && <h1>Cargando Mensajes...</h1>}
       <BodyMensajes a={mensjas} />
