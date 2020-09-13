@@ -38,7 +38,8 @@ io.on('connection', (socket) => {
         await mensajeNuevo.save();
 
         //emite a todos los que escuchan
-        socket.broadcast.emit('mensajeEmitido', data);
+        socket.broadcast.emit("mensajeCreado", "escribieron mensaje nuevo");
+        socket.emit("mensajeCreado",'EscribisteMensaje');
         
         //se realiza la llamada de respuesta
         callback({
