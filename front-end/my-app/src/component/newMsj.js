@@ -1,16 +1,21 @@
-import React, { useState,  } from 'react';
+import React, { useState, useContext,  } from 'react';
 import socket from '../socket/socket-io';
+import { userContext } from '../hooks/userContext';
 
 
 export const NewMsj = () => {
 
    
-
+    const {user} = useContext(userContext);
     const [msjNuevo, setmsjNuevo] = useState('');
     return (
         <form className="container" onSubmit={(e)=>{
             e.preventDefault();
-            socket.emit('mensaje',msjNuevo,(res)=>{
+            const mensajeCreado={
+                user:user,
+                mensaje:msjNuevo
+            };
+            socket.emit('mensaje',mensajeCreado,(res)=>{
                 console.log(res);
               });
             setmsjNuevo('');

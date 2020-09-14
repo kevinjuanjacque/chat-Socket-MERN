@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const {Schema} =mongoose;
 
 const mensajeShema = new Schema ({
+    user:{type:String},
     mensaje :{type: String, },
 })
 

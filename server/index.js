@@ -34,7 +34,7 @@ io.on('connection', (socket) => {
     socket.on('mensaje', async (data, callback) => {
         console.log(data);
         //se guarda en la bd
-        mensajeNuevo=new modelMensajes({mensaje:data});
+        mensajeNuevo=new modelMensajes({mensaje:data.mensaje,user:data.user});
         await mensajeNuevo.save();
 
         //emite a todos los que escuchan

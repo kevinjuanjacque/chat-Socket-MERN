@@ -1,40 +1,20 @@
-import React, { useEffect,  } from 'react';
-import { HookFetch } from './hooks/hookFetch';
-import './styloApp.css';
-import { NewMsj } from './component/newMsj';
-import { BodyMensajes } from './component/BodyMensajes';
-import socket from './socket/socket-io';
+import React, { useState } from 'react';
+import {AppRouter}  from './routers/Router';
+
+import { userContext } from './hooks/userContext';
+
 
 function App() {
   
-  
-   const {data:mensjas,loading}=HookFetch();
-  
-  useEffect(()=>{
-    socket.on("Server",(data)=>{
-      console.log(data);
-    });
-  },[])
-
-  useEffect(()=>{
-    document.getElementById("mensajes").scrollTop=document.getElementById("mensajes").scrollHeight;
-  },[mensjas])
-
+  const [user, setUser] = useState('');
   return (
-    <div>
-
-      <div className="container" >
-      <h1> BIENVENIDOS AL CHAT MERN SOCKET.IO</h1>
-      </div>
-
-      {loading && <h1>Cargando Mensajes...</h1>}
-      <BodyMensajes a={mensjas} />
-        
-
-      <NewMsj />
-
-      
-    </div>
+    
+    <userContext.Provider value={{
+      user,
+      setUser
+    }}>
+      <AppRouter />
+    </userContext.Provider>
   );
 }
 
